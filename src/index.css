@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import '@toast-ui/editor/dist/toastui-editor.css';
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
@@ -7,10 +6,25 @@
   --color-brand-500: #10b981;
   --color-brand-600: #059669;
   --color-brand-700: #047857;
+  --color-brand-800: #065f46;
+  /* Warna semantik: ubah di sini untuk mengganti tema tombol dan teks utama. */
+  --color-primary: #047857;
+  --color-primary-hover: #065f46;
   --color-ink-900: #0f172a;
 }
 
 body {
   font-family: var(--font-sans);
   @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+/* Kontras teks Toast UI Editor (tab mode dan placeholder) agar memenuhi WCAG AA. */
+.toastui-editor-mode-switch .tab-item,
+.toastui-editor-tabs .tab-item {
+  /* !important: CSS editor dimuat lazy sehingga urutannya setelah file ini. */
+  color: #475569 !important;
+}
+.toastui-editor-defaultUI .placeholder,
+.toastui-editor-contents .placeholder {
+  color: #64748b !important;
 }

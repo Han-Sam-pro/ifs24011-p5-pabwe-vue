@@ -4,7 +4,7 @@ import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { Pencil, Image, Trash2, Gavel, ArrowLeft } from 'lucide-vue-next';
 import { useAucationsStore } from '../states/aucationsStore';
 import { useUsersStore } from '@/features/users/states/usersStore';
-import MarkdownViewer from '../components/MarkdownViewer.vue';
+import { MarkdownViewer } from '../components/lazy';
 import ChangeModal from '../components/modals/ChangeModal.vue';
 import ChangeCoverModal from '../components/modals/ChangeCoverModal.vue';
 import BidModal from '../components/modals/BidModal.vue';
@@ -90,7 +90,7 @@ onMounted(load);
 
 <template>
   <section class="flex flex-col gap-6">
-    <RouterLink to="/" class="flex w-fit items-center gap-1 text-sm font-semibold text-brand-700 hover:underline">
+    <RouterLink to="/" class="flex w-fit items-center gap-1 text-sm font-semibold text-primary hover:underline">
       <ArrowLeft class="h-4 w-4" /> Kembali ke dashboard
     </RouterLink>
 
@@ -120,7 +120,7 @@ onMounted(load);
               </div>
               <div>
                 <dt class="text-slate-500">Tawaran tertinggi</dt>
-                <dd class="font-semibold text-brand-700">{{ highestBid === null ? 'Belum ada' : formatRupiah(highestBid) }}</dd>
+                <dd class="font-semibold text-primary">{{ highestBid === null ? 'Belum ada' : formatRupiah(highestBid) }}</dd>
               </div>
               <div>
                 <dt class="text-slate-500">Ditutup</dt>
@@ -136,7 +136,7 @@ onMounted(load);
               <button type="button" class="flex items-center justify-center gap-1 rounded-xl bg-slate-900 py-2 text-sm font-semibold text-white" @click="isChangeOpen = true">
                 <Pencil class="h-4 w-4" /> Ubah
               </button>
-              <button type="button" class="flex items-center justify-center gap-1 rounded-xl bg-brand-600 py-2 text-sm font-semibold text-white" @click="isCoverOpen = true">
+              <button type="button" class="flex items-center justify-center gap-1 rounded-xl bg-primary py-2 text-sm font-semibold text-white" @click="isCoverOpen = true">
                 <Image class="h-4 w-4" /> Cover
               </button>
               <button type="button" class="flex items-center justify-center gap-1 rounded-xl bg-red-600 py-2 text-sm font-semibold text-white" @click="onDelete">
@@ -148,7 +148,7 @@ onMounted(load);
               <button
                 v-if="myBid"
                 type="button"
-                class="w-full rounded-xl border border-red-300 py-2.5 font-semibold text-red-600 hover:bg-red-50"
+                class="w-full rounded-xl border border-red-300 py-2.5 font-semibold text-red-700 hover:bg-red-50"
                 @click="onCancelBid"
               >
                 Batalkan Penawaran Saya ({{ formatRupiah(myBid.bid) }})
@@ -156,7 +156,7 @@ onMounted(load);
               <button
                 v-else
                 type="button"
-                class="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 py-2.5 font-semibold text-white hover:bg-brand-700"
+                class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-2.5 font-semibold text-white hover:bg-primary-hover"
                 @click="isBidOpen = true"
               >
                 <Gavel class="h-4 w-4" /> Ajukan Penawaran

@@ -124,15 +124,15 @@ onMounted(() => {
           <span class="text-sm font-semibold text-slate-700">Email</span>
           <input :value="email.value" type="email" name="email" class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none" @input="email.onChange" />
         </label>
-        <span v-if="usersStore.validation.email" class="text-xs text-red-600">{{ usersStore.validation.email[0] }}</span>
-        <button type="submit" :disabled="usersStore.isProfileMutation" class="rounded-xl bg-brand-600 py-2.5 font-semibold text-white hover:bg-brand-700 disabled:opacity-60">
+        <span v-if="usersStore.validation.email" class="text-xs text-red-700">{{ usersStore.validation.email[0] }}</span>
+        <button type="submit" :disabled="usersStore.isProfileMutation" class="rounded-xl bg-primary py-2.5 font-semibold text-white hover:bg-primary-hover disabled:opacity-60">
           Simpan Profil
         </button>
       </form>
 
       <form class="flex flex-col gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200" novalidate @submit.prevent="onPhotoSubmit">
         <h2 class="text-lg font-bold text-ink-900">Foto Profil</h2>
-        <input type="file" accept="image/*" name="photo" class="text-sm" @change="onPhotoChange" />
+        <input type="file" accept="image/*" name="photo" aria-label="Pilih foto profil" class="text-sm" @change="onPhotoChange" />
         <button type="submit" :disabled="usersStore.isProfileMutation" class="rounded-xl bg-slate-900 py-2.5 font-semibold text-white hover:bg-slate-700 disabled:opacity-60">
           Unggah Foto
         </button>
@@ -145,28 +145,28 @@ onMounted(() => {
         <label class="flex flex-col gap-1">
           <span class="text-sm font-semibold text-slate-700">Kata sandi lama</span>
           <input :value="oldPassword.value" type="password" name="password" class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none" @input="oldPassword.onChange" />
-          <span v-if="passwordErrors.password || usersStore.validation.password" class="text-xs text-red-600">
+          <span v-if="passwordErrors.password || usersStore.validation.password" class="text-xs text-red-700">
             {{ passwordErrors.password || usersStore.validation.password[0] }}
           </span>
         </label>
         <label class="flex flex-col gap-1">
           <span class="text-sm font-semibold text-slate-700">Kata sandi baru</span>
           <input :value="newPassword.value" type="password" name="new_password" class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none" @input="newPassword.onChange" />
-          <span v-if="passwordErrors.newPassword" class="text-xs text-red-600">{{ passwordErrors.newPassword }}</span>
+          <span v-if="passwordErrors.newPassword" class="text-xs text-red-700">{{ passwordErrors.newPassword }}</span>
         </label>
         <label class="flex flex-col gap-1">
           <span class="text-sm font-semibold text-slate-700">Ulangi kata sandi baru</span>
           <input :value="newPasswordConfirmation.value" type="password" name="new_password_confirmation" class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none" @input="newPasswordConfirmation.onChange" />
-          <span v-if="passwordErrors.newPasswordConfirmation" class="text-xs text-red-600">{{ passwordErrors.newPasswordConfirmation }}</span>
+          <span v-if="passwordErrors.newPasswordConfirmation" class="text-xs text-red-700">{{ passwordErrors.newPasswordConfirmation }}</span>
         </label>
-        <button type="submit" :disabled="usersStore.isProfileMutation" class="rounded-xl bg-brand-600 py-2.5 font-semibold text-white hover:bg-brand-700 disabled:opacity-60">
+        <button type="submit" :disabled="usersStore.isProfileMutation" class="rounded-xl bg-primary py-2.5 font-semibold text-white hover:bg-primary-hover disabled:opacity-60">
           Ubah Kata Sandi
         </button>
       </form>
 
       <div class="flex flex-col gap-3 rounded-2xl border border-red-200 bg-red-50 p-6">
         <h2 class="text-lg font-bold text-red-700">Zona Berbahaya</h2>
-        <p class="text-sm text-red-600">Menghapus seluruh lelang Anda bersifat permanen.</p>
+        <p class="text-sm text-red-700">Menghapus seluruh lelang Anda bersifat permanen.</p>
         <button
           type="button"
           :disabled="aucationsStore.isAucationDeleteAll"

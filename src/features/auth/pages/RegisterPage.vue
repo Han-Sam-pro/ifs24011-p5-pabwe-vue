@@ -48,35 +48,35 @@ function fieldError(key, apiKey) {
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Nama lengkap</span>
         <input :value="name.value" type="text" name="name" class="rounded-xl border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none" @input="name.onChange" />
-        <span v-if="fieldError('name', 'name')" class="text-xs text-red-600">{{ fieldError('name', 'name') }}</span>
+        <span v-if="fieldError('name', 'name')" class="text-xs text-red-700">{{ fieldError('name', 'name') }}</span>
       </label>
 
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Email</span>
         <input :value="email.value" type="email" name="email" class="rounded-xl border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none" @input="email.onChange" />
-        <span v-if="fieldError('email', 'email')" class="text-xs text-red-600">{{ fieldError('email', 'email') }}</span>
+        <span v-if="fieldError('email', 'email')" class="text-xs text-red-700">{{ fieldError('email', 'email') }}</span>
       </label>
 
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Kata sandi</span>
         <input :value="password.value" type="password" name="password" class="rounded-xl border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none" @input="password.onChange" />
-        <span v-if="fieldError('password', 'password')" class="text-xs text-red-600">{{ fieldError('password', 'password') }}</span>
+        <span v-if="fieldError('password', 'password')" class="text-xs text-red-700">{{ fieldError('password', 'password') }}</span>
       </label>
 
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Ulangi kata sandi</span>
         <input :value="passwordConfirmation.value" type="password" name="password_confirmation" class="rounded-xl border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none" @input="passwordConfirmation.onChange" />
-        <span v-if="errors.passwordConfirmation" class="text-xs text-red-600">{{ errors.passwordConfirmation }}</span>
+        <span v-if="errors.passwordConfirmation" class="text-xs text-red-700">{{ errors.passwordConfirmation }}</span>
       </label>
 
-      <button type="submit" :disabled="authStore.isAuthRegister" class="rounded-xl bg-brand-600 py-3 font-semibold text-white hover:bg-brand-700 disabled:opacity-60">
+      <button type="submit" :disabled="authStore.isAuthRegister" class="rounded-xl bg-primary py-3 font-semibold text-white hover:bg-primary-hover disabled:opacity-60">
         {{ authStore.isAuthRegister ? 'Memproses...' : 'Daftar' }}
       </button>
     </form>
 
     <p class="mt-6 text-center text-sm text-slate-500">
       Sudah punya akun?
-      <RouterLink to="/auth/login" class="font-semibold text-brand-700 hover:underline">Masuk</RouterLink>
+      <RouterLink to="/auth/login" class="font-semibold text-primary hover:underline">Masuk</RouterLink>
     </p>
   </div>
 </template>

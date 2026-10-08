@@ -11,8 +11,8 @@ vi.mock('@/helpers/apiHelper', () => ({
   getAccessToken: vi.fn(() => null),
   putAccessToken: vi.fn(),
 }));
-vi.mock('../components/MarkdownViewer.vue', () => ({
-  default: { props: ['content'], template: '<div data-testid="viewer">{{ content }}</div>' },
+vi.mock('../components/lazy', () => ({
+  MarkdownViewer: { props: ['content'], template: '<div data-testid="viewer">{{ content }}</div>' },
 }));
 vi.mock('../components/modals/ChangeModal.vue', () => ({
   default: { props: ['open'], emits: ['submit', 'close'], template: '<div v-if="open" data-testid="change-modal"><button @click="$emit(\'submit\', { title: \'Baru\' })">kirim-ubah</button><button @click="$emit(\'close\')">tutup-ubah</button></div>' },

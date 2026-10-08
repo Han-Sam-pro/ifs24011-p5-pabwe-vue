@@ -3,10 +3,12 @@ import { render } from '@testing-library/vue';
 import MarkdownEditor from './MarkdownEditor.vue';
 
 const instances = [];
+let injectedMarkup = null;
 vi.mock('@toast-ui/editor', () => {
   class FakeEditor {
     constructor(options) {
       this.options = options;
+      if (injectedMarkup) options.el.innerHTML = injectedMarkup;
       this.markdown = options.initialValue;
       this.getMarkdown = vi.fn(() => this.markdown);
       this.setMarkdown = vi.fn((value) => {
@@ -56,5 +58,27 @@ describe('MarkdownEditor', () => {
     const editor = instances[0];
     unmount();
     expect(editor.destroy).toHaveBeenCalled();
+  });
+
+  it('melengkapi atribut aksesibilitas pada elemen internal editor', () => {
+    injectedMarkup = `
+      <div class="toastui-editor-tabs">
+        <div aria-label="Write" aria-role="tab" aria-selected="true"></div>
+        <div aria-label="Preview" aria-role="tab" aria-selected="false"></div>
+        <div aria-label="Lainnya" aria-role="x"></div>
+      </div>
+      <button type="button" class="more"></button>
+      <textarea></textarea>`;
+    const { container } = render(MarkdownEditor, { props: { label: 'Deskripsi lelang' } });
+    injectedMarkup = null;
+    expect(container.querySelector('textarea').getAttribute('aria-label')).toBe('Deskripsi lelang');
+    expect(container.querySelector('.more').getAttribute('aria-label')).toBe('Menu lainnya');
+    expect(container.querySelector('.toastui-editor-tabs').getAttribute('role')).toBe('tablist');
+    const write = container.querySelector('[aria-label="Write"]');
+    expect(write.hasAttribute('aria-role')).toBe(false);
+    expect(write.getAttribute('role')).toBe('tab');
+    const other = container.querySelector('[aria-label="Lainnya"]');
+    expect(other.hasAttribute('aria-role')).toBe(false);
+    expect(other.hasAttribute('role')).toBe(false);
   });
 });

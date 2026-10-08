@@ -63,8 +63,8 @@ onBeforeUnmount(revokePreview);
     <form class="flex flex-col gap-4" novalidate @submit.prevent="onSubmit">
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Pilih gambar</span>
-        <input type="file" accept="image/*" name="cover" class="text-sm" @change="onFileChange" />
-        <span v-if="error" class="text-xs text-red-600">{{ error }}</span>
+        <input type="file" accept="image/*" name="cover" aria-label="Pilih foto cover" class="text-sm" @change="onFileChange" />
+        <span v-if="error" class="text-xs text-red-700">{{ error }}</span>
       </label>
 
       <img
@@ -82,7 +82,7 @@ onBeforeUnmount(revokePreview);
         <button
           type="submit"
           :disabled="loading"
-          class="rounded-xl bg-brand-600 px-4 py-2 font-semibold text-white hover:bg-brand-700 disabled:opacity-60"
+          class="rounded-xl bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-hover disabled:opacity-60"
         >
           {{ loading ? 'Mengunggah...' : 'Unggah Cover' }}
         </button>

@@ -31,7 +31,7 @@ onMounted(() => usersStore.fetchUsers());
         <tbody class="divide-y divide-slate-100">
           <tr v-for="user in usersStore.users" :key="user.id" data-testid="user-row">
             <td class="flex items-center gap-3 px-5 py-3">
-              <img :src="user.photo" :alt="`Foto ${user.name}`" class="h-9 w-9 rounded-full object-cover bg-slate-100" />
+              <img :src="user.photo" :alt="`Foto ${user.name}`" loading="lazy" decoding="async" class="h-9 w-9 rounded-full object-cover bg-slate-100" />
               <span class="font-semibold text-slate-800">{{ user.name }}</span>
             </td>
             <td class="px-5 py-3 text-slate-600">{{ user.email }}</td>

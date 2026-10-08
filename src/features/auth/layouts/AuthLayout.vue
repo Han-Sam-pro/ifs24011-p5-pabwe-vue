@@ -5,17 +5,17 @@ import { Gavel } from 'lucide-vue-next';
 
 <template>
   <div class="grid min-h-screen lg:grid-cols-2">
-    <section class="flex items-center justify-center p-6 sm:p-10">
+    <main class="flex items-center justify-center p-6 sm:p-10">
       <div class="w-full max-w-md">
         <div class="mb-8 flex items-center gap-2">
-          <Gavel class="h-7 w-7 text-brand-600" aria-hidden="true" />
+          <Gavel class="h-7 w-7 text-primary" aria-hidden="true" />
           <span class="text-lg font-extrabold text-ink-900">Delcom Auction</span>
         </div>
         <RouterView />
       </div>
-    </section>
+    </main>
     <aside
-      class="hidden flex-col justify-end bg-gradient-to-br from-brand-600 to-emerald-900 p-12 text-white lg:flex"
+      class="hidden flex-col justify-end bg-gradient-to-br from-primary to-emerald-900 p-12 text-white lg:flex"
       aria-hidden="true"
     >
       <p class="text-4xl font-extrabold leading-tight">Lelang barang terbaik, dalam satu genggaman.</p>

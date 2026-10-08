@@ -56,7 +56,7 @@ async function onLogout() {
       </div>
       <button
         type="button"
-        class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-red-600 hover:bg-red-50"
+        class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50"
         data-testid="logout-button"
         @click="onLogout"
       >

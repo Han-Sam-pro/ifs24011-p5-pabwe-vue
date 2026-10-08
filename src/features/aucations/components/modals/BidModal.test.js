@@ -25,7 +25,7 @@ describe('BidModal', () => {
     const { emitted, container } = render(BidModal, { props: { open: true, startBid: 100000, highestBid: 200000 } });
     await fireEvent.update(screen.getByLabelText('Nominal penawaran (Rp)'), '150000');
     await fireEvent.click(screen.getByText('Kirim Penawaran'));
-    await waitFor(() => expect(container.querySelector('.text-red-600').textContent).toContain('200.001'));
+    await waitFor(() => expect(container.querySelector('.text-red-700').textContent).toContain('200.001'));
     expect(emitted().submit).toBeUndefined();
   });
 

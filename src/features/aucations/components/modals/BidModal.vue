@@ -48,7 +48,7 @@ watch(
   <BaseModal :open="open" title="Ajukan Penawaran" @close="emit('close')">
     <form class="flex flex-col gap-4" novalidate @submit.prevent="onSubmit">
       <p class="text-sm text-slate-500">
-        Penawaran minimal <span class="font-semibold text-brand-700">{{ formatRupiah(minimumBid) }}</span>
+        Penawaran minimal <span class="font-semibold text-primary">{{ formatRupiah(minimumBid) }}</span>
       </p>
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Nominal penawaran (Rp)</span>
@@ -60,7 +60,7 @@ watch(
           class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none"
           @input="bid.onChange"
         />
-        <span v-if="error" class="text-xs text-red-600">{{ error }}</span>
+        <span v-if="error" class="text-xs text-red-700">{{ error }}</span>
       </label>
       <div class="flex justify-end gap-2">
         <button type="button" class="rounded-xl px-4 py-2 font-semibold text-slate-600 hover:bg-slate-100" @click="emit('close')">
@@ -69,7 +69,7 @@ watch(
         <button
           type="submit"
           :disabled="loading"
-          class="rounded-xl bg-brand-600 px-4 py-2 font-semibold text-white hover:bg-brand-700 disabled:opacity-60"
+          class="rounded-xl bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-hover disabled:opacity-60"
         >
           {{ loading ? 'Mengirim...' : 'Kirim Penawaran' }}
         </button>

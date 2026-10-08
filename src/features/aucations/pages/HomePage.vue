@@ -70,7 +70,7 @@ onMounted(loadAucations);
       </div>
       <button
         type="button"
-        class="flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 font-semibold text-white hover:bg-brand-700"
+        class="flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 font-semibold text-white hover:bg-primary-hover"
         @click="isAddOpen = true"
       >
         <Plus class="h-4 w-4" /> Tambah Lelang
@@ -86,7 +86,7 @@ onMounted(loadAucations);
           :data-testid="`tab-${tab.key}`"
           :class="[
             'rounded-full px-4 py-1.5 text-sm font-semibold',
-            activeTab.key === tab.key ? 'bg-brand-600 text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100',
+            activeTab.key === tab.key ? 'bg-primary text-white' : 'bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100',
           ]"
           @click="selectTab(tab)"
         >
@@ -122,6 +122,8 @@ onMounted(loadAucations);
         <img
           :src="item.cover"
           :alt="`Cover ${item.title}`"
+          loading="lazy"
+          decoding="async"
           class="h-44 w-full object-cover bg-slate-100"
         />
         <div class="flex flex-1 flex-col gap-3 p-5">
@@ -133,7 +135,7 @@ onMounted(loadAucations);
             </div>
             <div>
               <dt class="text-slate-500">Tawaran tertinggi</dt>
-              <dd class="font-semibold text-brand-700">
+              <dd class="font-semibold text-primary">
                 {{ getHighestBid(item.bids) === null ? `${item.bids?.length ?? 0} penawaran` : formatRupiah(getHighestBid(item.bids)) }}
               </dd>
             </div>

@@ -32,8 +32,8 @@ const menus = [
         v-for="menu in menus"
         :key="menu.label"
         :to="menu.to"
-        class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 hover:bg-brand-50 hover:text-brand-700"
-        active-class="bg-brand-50 text-brand-700"
+        class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 hover:bg-brand-50 hover:text-primary"
+        active-class="bg-brand-50 text-primary"
         @click="emit('close')"
       >
         <component :is="menu.icon" class="h-5 w-5" aria-hidden="true" />

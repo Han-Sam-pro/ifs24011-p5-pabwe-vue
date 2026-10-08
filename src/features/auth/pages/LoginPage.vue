@@ -46,13 +46,14 @@ async function onSubmit() {
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Email</span>
         <input
+          id="login-email-input"
           :value="email.value"
           type="email"
           name="email"
           class="rounded-xl border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none"
           @input="email.onChange"
         />
-        <span v-if="errors.email || authStore.validation.email" class="text-xs text-red-600">
+        <span v-if="errors.email || authStore.validation.email" class="text-xs text-red-700">
           {{ errors.email || authStore.validation.email[0] }}
         </span>
       </label>
@@ -60,19 +61,21 @@ async function onSubmit() {
       <label class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Kata sandi</span>
         <input
+          id="login-password-input"
           :value="password.value"
           type="password"
           name="password"
           class="rounded-xl border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none"
           @input="password.onChange"
         />
-        <span v-if="errors.password" class="text-xs text-red-600">{{ errors.password }}</span>
+        <span v-if="errors.password" class="text-xs text-red-700">{{ errors.password }}</span>
       </label>
 
       <button
+        id="login-submit-button"
         type="submit"
         :disabled="authStore.isAuthLogin"
-        class="rounded-xl bg-brand-600 py-3 font-semibold text-white hover:bg-brand-700 disabled:opacity-60"
+        class="rounded-xl bg-primary py-3 font-semibold text-white hover:bg-primary-hover disabled:opacity-60"
       >
         {{ authStore.isAuthLogin ? 'Memproses...' : 'Masuk' }}
       </button>
@@ -80,7 +83,7 @@ async function onSubmit() {
 
     <p class="mt-6 text-center text-sm text-slate-500">
       Belum punya akun?
-      <RouterLink to="/auth/register" class="font-semibold text-brand-700 hover:underline">Daftar sekarang</RouterLink>
+      <RouterLink to="/auth/register" class="font-semibold text-primary hover:underline">Daftar sekarang</RouterLink>
     </p>
   </div>
 </template>

@@ -2,8 +2,8 @@ import { describe, it, expect, vi } from 'vitest';
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue';
 import ChangeModal from './ChangeModal.vue';
 
-vi.mock('../MarkdownEditor.vue', () => ({
-  default: {
+vi.mock('../lazy', () => ({
+  MarkdownEditor: {
     props: ['modelValue'],
     emits: ['update:modelValue'],
     template: '<textarea data-testid="desc-input" :value="modelValue" @input="$emit(\'update:modelValue\', $event.target.value)" />',

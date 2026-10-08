@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, watch } from 'vue';
 import BaseModal from './BaseModal.vue';
-import MarkdownEditor from '../MarkdownEditor.vue';
+import { MarkdownEditor } from '../lazy';
 import { useInput } from '@/hooks/useInput';
 import { toApiDateTime } from '@/helpers/toolsHelper';
 
@@ -66,7 +66,7 @@ watch(
           class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none"
           @input="title.onChange"
         />
-        <span v-if="errors.title || validation.title" class="text-xs text-red-600">
+        <span v-if="errors.title || validation.title" class="text-xs text-red-700">
           {{ errors.title || validation.title[0] }}
         </span>
       </label>
@@ -74,7 +74,7 @@ watch(
       <div class="flex flex-col gap-1">
         <span class="text-sm font-semibold text-slate-700">Deskripsi</span>
         <MarkdownEditor v-model="description.value" />
-        <span v-if="errors.description" class="text-xs text-red-600">{{ errors.description }}</span>
+        <span v-if="errors.description" class="text-xs text-red-700">{{ errors.description }}</span>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2">
@@ -88,7 +88,7 @@ watch(
             class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none"
             @input="startBid.onChange"
           />
-          <span v-if="errors.startBid || validation.start_bid" class="text-xs text-red-600">
+          <span v-if="errors.startBid || validation.start_bid" class="text-xs text-red-700">
             {{ errors.startBid || validation.start_bid[0] }}
           </span>
         </label>
@@ -102,7 +102,7 @@ watch(
             class="rounded-xl border border-slate-300 px-3 py-2 focus:border-brand-500 focus:outline-none"
             @input="closedAt.onChange"
           />
-          <span v-if="errors.closedAt || validation.closed_at" class="text-xs text-red-600">
+          <span v-if="errors.closedAt || validation.closed_at" class="text-xs text-red-700">
             {{ errors.closedAt || validation.closed_at[0] }}
           </span>
         </label>
@@ -115,7 +115,7 @@ watch(
         <button
           type="submit"
           :disabled="loading"
-          class="rounded-xl bg-brand-600 px-4 py-2 font-semibold text-white hover:bg-brand-700 disabled:opacity-60"
+          class="rounded-xl bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-hover disabled:opacity-60"
         >
           {{ loading ? 'Menyimpan...' : 'Simpan Lelang' }}
         </button>

@@ -6,8 +6,8 @@ import { renderWithProviders } from '@/test-utils';
 import { apiRequest } from '@/helpers/apiHelper';
 
 vi.mock('sweetalert2', () => ({ default: { fire: vi.fn(() => Promise.resolve({ isConfirmed: true })) } }));
-vi.mock('../components/MarkdownEditor.vue', () => ({
-  default: {
+vi.mock('../components/lazy', () => ({
+  MarkdownEditor: {
     props: ['modelValue'],
     emits: ['update:modelValue'],
     template: '<textarea data-testid="desc-input" :value="modelValue" @input="$emit(\'update:modelValue\', $event.target.value)" />',
@@ -99,7 +99,7 @@ describe('HomePage', () => {
   it('memakai tab semua bila query tab tidak dikenal', async () => {
     await renderWithProviders(HomePage, { initialState: AUTH }, { route: '/?tab=aneh' });
     await screen.findByText('Laptop Gaming');
-    expect(screen.getByTestId('tab-all')).toHaveClass('bg-brand-600');
+    expect(screen.getByTestId('tab-all')).toHaveClass('bg-primary');
   });
 
   it('menampilkan pesan kosong saat API tidak mengembalikan data', async () => {

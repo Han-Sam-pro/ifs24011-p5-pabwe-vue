@@ -11,8 +11,9 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [vue(), tailwindcss()],
     build: {
-      // Toast UI Editor cukup besar; batas default 500 kB akan selalu memberi peringatan.
-      chunkSizeWarningLimit: 1200,
+      // Chunk editor Markdown (Toast UI, ±550 kB) sengaja dimuat lazy dan hanya di modal lelang.
+      // Batas ini memberi peringatan bila chunk lain membengkak.
+      chunkSizeWarningLimit: 600,
     },
     resolve: {
       alias: {

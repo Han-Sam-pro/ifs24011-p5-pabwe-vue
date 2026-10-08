@@ -57,6 +57,21 @@ bun run dev              # http://localhost:<APP_PORT>
 | `bun run test` | Jalankan seluruh tes |
 | `bun run coverage` | Tes + laporan coverage (threshold 100%, gagal bila di bawah) |
 
+## Performa
+
+- **Code splitting per halaman**: semua rute di `src/router.js` memakai `import()` dinamis. Bundle awal hanya berisi shell aplikasi (±42 kB gzip ±17 kB).
+- **Toast UI Editor/Viewer dimuat lazy** lewat `src/features/aucations/components/lazy.js`. Library ini (±550 kB dan ±370 kB) hanya diunduh saat modal deskripsi atau halaman detail dibuka. CSS-nya ikut dipindah ke komponen yang memakainya, sehingga tidak lagi menjadi CSS global.
+- **Gambar daftar lelang dan avatar** memakai `loading="lazy"` dan `decoding="async"`.
+
+Untuk mengecek ukuran bundle: `bun run build` lalu lihat daftar `dist/assets`.
+
+## Maintainability
+
+- **Warna semantik** didefinisikan di `src/index.css` (`--color-primary`, `--color-primary-hover`). Untuk mengganti tema tombol dan teks utama, cukup ubah dua variabel itu. Jangan menulis `bg-brand-700` langsung di komponen.
+- **Komponen lazy** untuk library besar cukup diimpor dari `lazy.js`. Jangan mengimpor `@toast-ui/*` langsung di komponen halaman.
+- **Aksesibilitas**: setiap perubahan UI sebaiknya lulus axe-core (WCAG 2.1 AA). Kontras minimal 4,5:1 untuk teks normal, dan semua input harus punya label (`<label>` atau `aria-label`).
+- **Tes**: `bun run coverage` menjalankan seluruh tes dengan gerbang coverage 100%. Tambahkan tes untuk setiap file baru di `src/`.
+
 ## Catatan Implementasi
 
 - Token disimpan di `localStorage` (`delcom_access_token`) dan dikirim sebagai `Authorization: Bearer <token>`.
